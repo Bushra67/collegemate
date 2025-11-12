@@ -1,0 +1,21 @@
+{
+"type": "FeatureCollection",
+"features": [
+    {   "type": "Feature",
+"properties": {
+        "name": "CSE LH-01",
+        "level": 1,
+        "base_height": 0,
+        "height": 3     },     "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.8342846,17.3155817],[76.8343237,17.3155856],[76.8343261,17.3154753],[76.8342834,17.3154753],[76.8342846,17.3155817]]]     }
+    },
+    {     "type": "Feature",     "properties": {
+        "name": "CSE CAD LAB",
+        "level": 1,
+        "base_height": 0,
+        "height": 3     },     "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.8339698,17.3154309],[76.8339690,17.3155204],[76.8338577,17.3155195],[76.8338623,17.3154300],[76.8339698,17.3154309]]]    }
+    } ]
+}

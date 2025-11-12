@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PDA College 3D Map</title>
+<link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet"/>
+<style>
+html,body{margin:0;height:100%;width:100%}
+#map{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%}
+#floors{
+position:absolute;
+top:10px;
+left:10px;
+z-index:1;
+background:white; 
+border-radius:6px;
+padding:4px;
+box-shadow:0 2px 6px rgba(0,0,0,0.3)
+onclick=cursor;
+}
+.btn{
+border:none;
+margin:2px;
+padding:6px 10px;
+background:#007bff;
+color:white;
+border-radius:4px; 
+cursor:pointer;
+font-size:13px
+}
+.btn:hover{background:#a5d2e2}
+</style>
+</head>
+<body>
+<div id="floors">
+<button class="btn" onclick="showFloor(1)">Floor 1</button>
+<button class="btn" onclick="showFloor(2)">Floor 2</button>
+</div>
+<div id="map"></div>
+<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+<script>
+const map=new maplibregl.Map({
+container:'map',
+style:{
+version:8,
+sources:{
+'osm-tiles':{
+type:'raster',
+tiles:[
+'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+'https://b.tile.openstreetmap.org/{z}/{x}/{y}.png',
+'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png'
+],
+tileSize:256,
+attribution:'© OpenStreetMap contributors'
+}
+},
+layers:[
+{
+id:'osm-tiles',
+type:'raster',
+source:'osm-tiles',
+minzoom:0,
+maxzoom:19
+}
+]
+},
+center:[76.8347,17.3153],
+zoom:18,
+pitch:60,
+bearing:-20
+});
+
+const floors={
+1:{
+type:'FeatureCollection',
+features:[
+{
+type:'Feature',
+properties:{name:'CSE LH-01',height:10},
+geometry:{
+type:'Polygon',
+coordinates:[
+[
+[76.83428462392584,17.315581697763236],
+[76.83432376280945,17.315585634618785],
+[76.83432611259713,17.315475308457223],
+[76.83428344026936,17.315475308457223],
+[76.83428462392584,17.315581697763236]
+]
+]
+}
+},
+{
+type:'Feature',
+properties:{name:'CSE CAD LAB',height:15},
+geometry:{
+type:'Polygon',
+coordinates:[
+[
+[76.8339698570478,17.315430894910605],
+[76.83396901020615,17.3155204158666],
+[76.83385774981195,17.31551958583772],
+[76.83386231854291,17.31543008241998],
+[76.8339698570478,17.315430894910605]
+]
+]
+}
+}
+]
+},
+2:{
+type:'FeatureCollection',
+features:[
+{
+type:'Feature',
+properties:{name:'CSE LAB 2',height:25},
+geometry:{
+type:'Polygon',
+coordinates:[
+[
+[76.83428462392584,17.315581697763236],
+[76.83432376280945,17.315585634618785],
+[76.83432611259713,17.315475308457223],
+[76.83428344026936,17.315475308457223],
+[76.83428462392584,17.315581697763236]
+]
+]
+}
+},
+{
+type:'Feature',
+properties:{name:'CSE LAB 3',height:30},
+geometry:{
+type:'Polygon',
+coordinates:[
+[
+[76.8339698570478,17.315430894910605],
+[76.83396901020615,17.3155204158666],
+[76.83385774981195,17.31551958583772],
+[76.83386231854291,17.31543008241998],
+[76.8339698570478,17.315430894910605]
+]
+]
+}
+}
+]
+}
+};
+
+function showFloor(n){
+if(map.getSource('buildings')){
+map.removeLayer('3d-buildings');
+map.removeSource('buildings');
+}
+map.addSource('buildings',{
+type:'geojson',
+data:floors[n]
+});
+map.addLayer({
+id:'3d-buildings',
+type:'fill-extrusion',
+source:'buildings',
+paint:{
+'fill-extrusion-color':'#007bff',
+'fill-extrusion-height':['get','height'],
+'fill-extrusion-opacity':0.85
+}
+});
+floors[n].features.forEach(f=>{
+const center=f.geometry.coordinates[0][0];
+new maplibregl.Popup({
+closeButton:false,
+closeOnClick:false
+})
+.setLngLat(center)
+.setHTML(`<b>${f.properties.name}</b>`)
+.addTo(map);
+});
+}
+
+map.on('load',()=>showFloor(1));
+</script>
+</body>
+</html>

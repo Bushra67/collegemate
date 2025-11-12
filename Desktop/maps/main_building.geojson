@@ -1,0 +1,15 @@
+{"type":"FeatureCollection",
+"features":[
+{"type":"Feature","properties":{"name":"Department of Ceramics"},"geometry":{"type":"Point","coordinates":[76.83500386733391,17.31494662692866]}},
+{"type":"Feature","properties":{"name":"Auditorium"},"geometry":{"type":"Point","coordinates":[76.83622918775228,17.314322590801595]}},
+{"type":"Feature","properties":{"name":"Library"},"geometry":{"type":"Point","coordinates":[76.8344895418013,17.314561644609626]}},
+{"type":"Feature","properties":{"name":"Training and Placements (TPO)"},"geometry":{"type":"Point","coordinates":[76.83475775600738,17.314604484289674]}},
+{"type":"Feature","properties":{"name":"Department of CSE - New Building"},"geometry":{"type":"Point","coordinates":[76.83588571438258,17.31477261819869]}},
+{"type":"Feature","properties":{"name":"Department of Mechanical Engineering"},"geometry":{"type":"Point","coordinates":[76.83584957444174,17.315385746769195]}},
+{"type":"Feature","properties":{"name":"Department of CSE (New Centre)"},"geometry":{"type":"Point","coordinates":[76.83541782534081,17.31549832740785]}},
+{"type":"Feature","properties":{"name":"Main Entrance"},"geometry":{"type":"Point","coordinates":[76.83304473138901,17.31548223218367]}},
+{"type":"Feature","properties":{"name":"Department of CSE (Old Centre)"},"geometry":{"type":"Point","coordinates":[76.83393045763546,17.315477247457892]}},
+{"type":"Feature","properties":{"name":"Department of ECE/EEE"},"geometry":{"type":"Point","coordinates":[76.83498030996623,17.31559835827018]}},
+{"type":"Feature","properties":{"name":"Campus Boundary"},"geometry":{"type":"LineString","coordinates":[[76.83309846418297,17.315634814950286],[76.83384156916628,17.315650344224238],[76.83620611557444,17.315843655024665],[76.83650527412289,17.315265434873922],[76.83646386761711,17.314778852379078],[76.8364577976804,17.314542741757222],[76.83714439118756,17.31447699597291],[76.8370238302885,17.313711369715165],[76.8340182079358,17.31449707578254],[76.83379410244862,17.314630891745182]]}},
+{"type":"Feature","properties":{"name":"Pathway"},"geometry":{"type":"LineString","coordinates":[[76.83308456434219,17.315628686247152],[76.83291818162337,17.314676817310826],[76.83378920283263,17.31463742184114]]}}
+]}
